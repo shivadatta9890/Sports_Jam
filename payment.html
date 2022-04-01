@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment page</title>
+  
+    <style>
+        html,
+        body {
+            background-color: #ededed;
+            width: 100%;
+            margin: 0px;
+            height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            font-family: sans-serif;
+        }
+
+        #container {
+            background-color: #e2e2e2;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+
+        }
+
+        #box {
+            width: 25%;
+            border-radius: 5%;
+            margin: auto;
+            padding: 5px;
+            box-shadow: 0 2px 2px 0 rgba(243, 239, 239, 0.2), 0 1px 5px 0 rgba(233, 223, 223, 0.19);
+            ;
+        }
+
+        .topbox {
+            background-color: #141414;
+            color: white;
+            padding: 20px;
+            border-radius: 5% 5% 0 0;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="container">
+
+        <div id="box">
+
+
+
+            <div class="topbox">
+                <div style="display:inline-block ;background-color: white;width:80px;height:80px;margin-right: 10px;">
+                    <img src="https://storage.sg.content-cdn.io/in-resources/b368029c-a4dd-448a-a888-58348cb1b144/Images/userimages/logo.jpg"
+                        alt="" width="80px" height="80px">
+                </div>
+                <div style="display:inline-block;vertical-align:top;">
+                    <p style="font-size: 22px;">Sportsjam</p>
+                    <p style="color: grey;">Sportsjam - #23391111970</p>
+                    <h1 id="showtotal" style="margin-top: 5px;font-weight: lighter;"></h1>
+                </div>
+                <p style="margin-top: 10px;">English ▼</p>
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; padding: 15px;background-color: #FAFAFB;color: grey;">
+                <a href="card.html" style="text-decoration: none; color: grey;">
+                    < Card</a>
+                        <p id="contactno."></p>
+            </div>
+
+            <div style="padding:20px;background-color: white; color: grey;">
+                <div style="border:1px solid grey;padding: 10px;">
+                    <p>Pay With Your Saved Card
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ></p>
+                    <p style="font-size: 12px;">Access securely with OTP</p>
+                </div> <br>
+                <p>Add New Card</p>
+                <form
+                    style="display:grid; grid-template-columns: 75% 20%; grid-gap:5%;margin-top: 20px;margin-bottom: 20px;">
+                    <input type="number" placeholder="Card Number"
+                        style="padding: 2% 0%;border: none; border-bottom: 1px solid grey;" required>
+                    <input type="text" placeholder="Expiry"
+                        style="padding: 2% 0%;border: none; border-bottom: 1px solid grey;" required>
+                    <input type="text" placeholder="Card Holder's Name"
+                        style="padding: 2% 0%;border: none; border-bottom: 1px solid grey;margin-top: 10px;" required>
+                    <input type="number" placeholder="CVV"
+                        style="padding: 2% 0%;border: none; border-bottom: 1px solid grey;margin-top: 10px;" required>
+                </form>
+                <input type="checkbox">
+                <label>Remember Card</label>
+            </div>
+
+            <a href="congrats.html" id="paynow"><button
+                    style="background-color: black;color:white;width:100%; padding:20px;border-radius:0 0 20px 20px;"
+                    id="paisa">
+                     Pay
+                </button></a>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+
+<Script>
+
+
+
+
+   
+
+
+    document.getElementById("paynow").addEventListener("click",()=>{
+
+        localStorage.setItem("totalCartValue",JSON.stringify(0))
+
+localStorage.setItem("cartProducts",JSON.stringify([]))
+       
+    })
+
+</Script>

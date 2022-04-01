@@ -1,0 +1,128 @@
+.product-page-container{
+    display: flex;
+    flex-direction:row ;
+    padding: 0px 25px;
+    gap: 20px;
+    margin-top: 15px;
+    width: 98.5vw;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+.filter-sidebar{
+    height: 400px;
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+}
+.category-menu-box{
+    display: flex;
+    flex-direction: column;
+   /* border: 1px solid red; */
+    height: 280px;
+    width: 100%;
+    align-items: center;
+    gap: 0px;
+}
+.category-menu-title{
+    width: 100%;
+    background-color: gray;
+    color: black;
+    padding: 8px;
+    margin-top: 0px;
+    margin: 0;
+    position: relative;
+    /* z-index: 3; */
+    text-align: center;
+    box-sizing: border-box;
+}
+.category-menu{
+    width: 100%;
+    height: 100%;
+   overflow: scroll;
+}
+
+.main-area-box{
+    display: flex;
+    flex-direction: column;
+    width: 84%;
+
+}
+.product-sorting-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    /* padding-right:40px ; */
+    box-sizing: border-box;
+    height: 80px;
+    border-bottom: 1px solid gray;
+}
+.sorting-container {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 30px;
+}
+.show-as-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.choose-grid{
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    gap: 8px;
+}
+.choose-grid div{
+    height: 35px;
+    width:35px ;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: rgb(196, 193, 193);
+
+}
+
+
+.show-as-title{
+color: rgb(196, 193, 193);
+}
+#sorting{
+height: 40px;
+padding: 8px 14px;
+border-radius: 10px;
+width: 200px;
+}
+#product-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    align-items: center;
+    row-gap: 50px;
+}
+
+.product-box{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.product-img{
+    width: 100%;
+}
+.product-price-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}

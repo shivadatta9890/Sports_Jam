@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping page</title>
+
+    <style>
+        
+        .b1 {
+            display: flex;
+            
+            justify-content: space-between;
+        }
+
+        .b2 {
+           
+            width: 50%;
+        }
+
+        .textc {
+            text-align: center;
+        }
+
+        .textl {
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .textr {
+            text-align: right;
+            padding-top: 22px;
+            padding-right: 15px;
+        }
+
+        img {
+            margin-top: 50px;
+            height: 70px;
+        }
+
+        .boxinr {
+            width: 70%;
+            margin: auto auto auto 25%;
+        }
+
+        .biginp {
+            width: 95%;
+            height: 40px;
+            border-radius: 4px;
+            /* padding: 5px; */
+        }
+
+        .inpname {
+            width: 45%;
+            height: 40px;
+            border-radius: 4px;
+        }
+
+        .inppin {
+            width: 29%;
+            height: 40px;
+            border-radius: 4px;
+        }
+
+        input {
+            margin: 5px;
+        }
+
+        .dwnbtn {
+            text-align: right;
+
+        }
+
+        .dwnreturn {
+            text-align: left;
+            padding-top: 20px;
+            padding-left: 15px;
+            padding-bottom: 20px;
+        }
+
+
+        hr {
+            color: black;
+            height: 1px;
+            background-color: black;
+        }
+
+        #rightbox1 {
+            background-color: #fcf7f7;
+        }
+
+        .boxinl {
+            width: 70%;
+            margin: auto 25% auto auto;
+        }
+
+        #giftinp {
+            width: 65%;
+            height: 35px;
+        }
+
+        #b2rcoupon {
+            width: 75%;
+            height: 35px;
+            border-radius: 4px;
+        }
+
+        #b2rbtn {
+            width: 15%;
+            height: 35px;
+            border-radius: 4px;
+        }
+
+        #boxright>div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        #left_div {
+            padding: 70px 20px 50px 100px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        *{
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display:grid;grid-template-columns: 50% 50%;">
+
+
+        <div id="left_div">
+           <a href="index.html"><img src="https://storage.sg.content-cdn.io/in-resources/b368029c-a4dd-448a-a888-58348cb1b144/Images/userimages/logo.jpg"
+                style="margin:auto">
+            </a> 
+            <br>
+            <a href="cart.html" style="text-decoration: none;">Cart > </a> <a href="checkout.html"
+                style="text-decoration: none;">Information > </a><a>Shipping > </a><a>Payment </a>
+            <div
+                style="display:grid;; border: 1px solid rgb(216, 209, 209);padding:0px 10px; grid-template-columns: 10% 80% 10%;margin-top: 30px;">
+                <p>Contact</p>
+                <p id="connect"></p>
+                <p><a href="checkout.html" style="text-decoration: none;">Change</a></p>
+
+                <p>Ship to</p>
+                <p id="addres_"></p>
+                <p><a href="checkout.html" style="text-decoration: none;">Change</a></p>
+            </div> <br>
+            <p style="text-align: left;">Shipping Method</p>
+            <div
+                style="display: flex; justify-content: space-between; border: 1px solid rgb(216, 209, 209);padding:0px 10px;">
+                <p><a href="#"><button
+                            style="background-color: rgb(65, 65, 245);padding: 1px;color:white;border-radius: 100%;">o</button></a>Free
+                    shipping</p>
+                <p>Free</p>
+            </div>
+            <div style="display: flex; justify-content: space-between;margin-top: 50px;">
+                <a href="checkout.html" style="text-decoration:none;">
+                    < Return to Information</a> <a href="payment.html" target="_blank"><button
+                                style="background-color: #197BBD;color: white;padding:15px;border-radius: 5px;">Continue
+                                to payment</button></a>
+            </div>
+        </div>
+
+
+
+        <div class="textc b2" id="rightbox1" style="width:100%">
+            <div class="boxinl">
+                <div id="boxright">
+
+                    <br>
+                    <br>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <form action="">
+                    <div>
+                        <input type="text" placeholder="Gift card or Discount code" id="b2rcoupon">
+                        <button id="b2rbtn">Apply</button>
+                    </div>
+                </form>
+                <br>
+                <hr>
+                <br>
+                <div class="dwnreturn">
+                    <div style="display:flex;justify-content: space-between;align-items: center;">
+                        <p> Subtotal </p>
+                        <p class="dekhototal"></p>
+                    </div>
+
+                    <div style="display:flex;justify-content: space-between;align-items: center;">
+                        <p> Shipping </p>
+                        <p>Calculated at next step</p>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="dwnreturn" style="display:flex;justify-content: space-between;align-items: center;">
+                    <div> Total
+                        <p id="tax"></p>
+                    </div>
+                    <div style="font-size: 20px;font-weight: bold;" class="dekhototal"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+</body>
+
+<script>
+    let parent = document.getElementById("boxright")
+
+    let products = JSON.parse(localStorage.getItem("cartProducts"));
+
+    let sum = 0;
+
+    function showhokproduct() {
+
+        products.forEach(function (products) {
+
+            sum = sum + Number(products.price??products.mrp)
+
+        
+
+
+        })
+
+    }
+    showhokproduct()
+
+    let dekhototal = document.getElementsByClassName("dekhototal")[0]
+
+    dekhototal.textContent = "₹" + sum + ".00"
+
+
+    let tax = document.getElementById("tax")
+
+    tax.textContent = "including" + " " + "₹" + Math.round((sum * 0.12)) + " " + "in taxes"
+
+    let total = document.getElementsByClassName("dekhototal")[1]
+
+    total.textContent = "₹" + sum + ".00"
+
+    let input = document.getElementById("b2rcoupon")
+
+    let apply = document.getElementById("b2rbtn")
+    apply.addEventListener("click", dedo_discount)
+
+    function dedo_discount(event) {
+        event.preventDefault();
+        if (input.value == "masai30") {
+            let add = sum - (sum * 0.3)
+            dekhototal.innerHTML = null
+            dekhototal.textContent = "₹" + add + ".00"
+            total.textContent = "₹" + add + ".00"
+            input.value = ""
+        }
+    }
+
+
+    let data = JSON.parse(localStorage.getItem("hok_info"))
+
+    let connect = document.getElementById("connect")
+    let addres_ = document.getElementById("addres_")
+
+    connect.textContent = data[data.length - 1].contact
+    addres_.textContent = data[data.length - 1].address
+
+    localStorage.setItem("hok_info", JSON.stringify(data))
+</script>
+
+</html>

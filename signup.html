@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <title>Shiva signup</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/chappal.css"> 
+
+</head>
+<style>
+    *{
+        font-family: sans-serif;
+    }
+   .create_account {
+        display: grid;
+        grid-template-columns: 46% 46%;
+        padding: 1%;
+        gap: 2%;
+        color: rgb(87, 84, 84);
+        padding: 2%;
+
+    }
+
+    .account {
+        margin-left: 80px;
+    }
+
+    .account>input {
+        width: 70%;
+        height: 14%;
+        border: 1px solid grey;
+        border-radius: 5px;
+        margin: 6px 20px;
+    }
+
+    .account>button {
+        width: 71.5%;
+        margin: 40px 20px;
+        height: 14%;
+        background-color: orange;
+        border-radius: 5px;
+        border: 1px solid orange;
+        color: white;
+        font-size: 20px;
+
+    }
+
+    .text {
+
+        font-size: large;
+        line-height: 25px;
+    }
+    label{
+        color:red;
+    }
+    .nav-float-right:hover{
+      cursor: pointer;
+  }
+
+
+
+
+
+</style>
+
+<body>
+<!-- top section -->
+<div id="navbar"></div>
+
+
+
+
+    <div style="display: grid; grid-template-columns: 50% 50%; text-align: center; color: orange;">
+        <h2>NEW USER</h2>
+        <h2>REGISTRATION</h2>
+    </div>
+    <hr style="width: 100%; border:1px solid orange;">
+    <div class="create_account">
+        <div class="text">
+            <p>At Sportsjam.in, buy your favourite brand and sportsgear at great prices. Don't forget to use our welcome
+                gift vouchers (worth Rs.2000)* for more savings!
+                <br/>
+
+                Register online and and enjoy the following benefits:</p>
+            <ul>
+                <li>Get Discount Vouchers, Special Promotions & Offers</li>
+                <li>Checkout faster while making your purchases</li>
+                <li>View your Order History and track your Order Status</li>
+                <li>Make changes to your account information or password</li>
+            </ul>
+
+        </div>
+
+
+        <div class="account">
+
+            <label>Name *</label>
+            <input style="margin-left: 62px;" id="name" type="text" placeholder="" autocomplete="off" required >
+            <br>
+            <label>UserName *</label>
+            <input style="margin-left: 28px;" id="username" type="text" placeholder="" autocomplete="off" required>
+            <br>
+            <label>Mobile No *</label>
+            <input style="margin-left: 31px;" id="mobile" type="tel" placeholder="" autocomplete="off" required>
+            <br>
+            <label>Email *</label>
+            <input style="margin-left: 63px;" id="email" type="email" placeholder=""  autocomplete="off" required>
+            <br>
+        
+            <label> Password *</label>
+            <input style="margin-left: 32px;" id="password" type="password" placeholder="" autocomplete="off" required>
+            <br>
+
+            <button id="RegisterBtn" style="margin-left: 120px;margin-top:14px;">Submit</button>
+            <!-- <p style="font-size: small; margin:-30px 0 0 100px ;">By clicking "Register" button, you confirm that you
+                accept our <a style="text-decoration: none;" href=""> terms and conditions.</a> </p> -->
+
+        </div>
+    </div>
+
+
+<div id="footer"></div>
+
+
+    
+</body>
+
+</html>
+
+<script type="module">
+
+import categories from "./categories.js"
+     import {navbar,createDropdown,updateCart,checkLogStatus} from "./header.js"
+     import footer from "./chappal.js"
+    document.getElementById("navbar").innerHTML = navbar()
+        createDropdown(categories)
+        updateCart()
+        checkLogStatus()
+document.getElementById("footer").innerHTML = footer()
+
+    document.getElementById("RegisterBtn").addEventListener("click", signUp);
+    var usersData = JSON.parse(localStorage.getItem("usersData")) ?? []
+
+  async  function signUp() {
+        // e.preventDefault()
+    
+        try{
+        let register_data = {
+            name:document.getElementById("name").value,
+            email:document.getElementById("email").value,
+            password:document.getElementById("password").value,
+            username:document.getElementById("username").value,
+            mobile:document.getElementById("mobile").value,
+            description:"sportsjam.in user",
+       };
+         register_data = JSON.stringify(register_data)
+
+        let url = `https://masai-api-mocker.herokuapp.com/auth/register`;
+
+        let response =await fetch(url,{
+              method:"POST",
+              body:register_data,
+              headers:{
+                  "Content-Type":"application/json"
+              }
+          });
+
+          let data = await response.json()
+
+          if(data.error==true) {
+              alert("User Already exist")
+            } else{
+              window.location.href = "signin.html"
+
+              console.log(data) 
+          }
+        }
+        catch(err) {
+            alert("Something went wrong")
+        }
+      
+
+
+    }
+
+
+
+    document.getElementById("logInBtn").addEventListener("click",()=>{
+  
+  let logInBtn = document.getElementById("logInBtn")
+  if(logInBtn.innerText=="Log Out") {
+ 
+      localStorage.setItem("userData",JSON.stringify({}))
+      window.location.reload();
+  } else{
+      window.location.href = "signin.html"
+      checkLogStatus()
+  }
+
+})
+
+document.getElementById("createUser").addEventListener("click",()=>{
+let createUserBtn = document.getElementById("createUser");
+  if(createUserBtn.innerText=="Create Account") {
+      window.location.href = "signup.html"
+  }
+  
+})
+</script>

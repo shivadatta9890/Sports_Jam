@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shiva signin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+
+</head>
+<link rel="stylesheet" href="styles/header.css">
+<link rel="stylesheet" href="styles/chappal.css"> 
+<style>
+    *{
+        font-family: sans-serif;
+    }
+   
+  
+
+    .signin {
+        border: 4px solid grey;
+        margin: auto;
+        width: 450px;
+        height: 450px;
+        padding: 1%;
+    }
+
+    .signin>input {
+        width: 70%;
+        border: 1px solid grey;
+        height: 40px;
+        border-radius: 5px;
+        margin: 10px 20px;
+    }
+
+    .signin>button {
+        width: 95%;
+        height: 40px;
+        background-color: orange;
+        color: white;
+        border-radius: 5px;
+        border: 1px solid orange;
+        margin-left: 12px;
+
+    }
+
+    .closebtn {
+        display: grid;
+        grid-template-columns: 60% 35%;
+
+    }
+
+    .closebtn>h2 {
+        margin-left: 175px;
+    }
+
+    .closebtn>button {
+        width: 80px;
+        height: 20px;
+        margin-left: 100px;
+    }
+
+    .optbtn {
+        display: grid;
+        grid-template-columns: 48% 48%;
+        gap: 10px;
+    }
+
+    .optbtn>a>button {
+        width: 90%;
+        height: 40px;
+        margin: 20px 0 0 20px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+
+    #fbtn {
+        background-color: blue;
+        width:75%;
+        height:75%;
+        padding:10px;
+        margin-bottom:10px;
+    }
+    #fbtn:hover{
+        cursor: pointer;
+    }
+
+    #gbtn {
+        background-color: rgb(241, 56, 56);
+        width:75%;
+        height:75%;
+        padding:10px;
+        margin-bottom:10px;
+    }
+    #gbtn:hover{
+        cursor: pointer;
+    }
+    .nav-float-right:hover{
+      cursor: pointer;
+  }
+
+#login:hover{
+    cursor:pointer;
+}
+
+</style>
+
+<body>
+  
+  
+
+
+       <div id="navbar"></div>
+
+
+
+
+    <div class="signin">
+        <div class="closebtn">
+            <h2>Sign In</h2>
+            <button id="closesec">Close X</button>
+        </div>
+        <label>User Name</label>
+        <input  id="username" type="text" autocomplete="off" required>
+        <br>
+        <label>Password</label>
+        <input style="margin-left: 30px;" id="password" type="password" autocomplete="off">
+        <br>
+        <div style="display: grid; grid-template-columns: 50% 50%;">
+            <a href="signup.html">
+                <p>New User? Register</p>
+            </a>
+            <a href="">
+                <p style="float: right;">Forgot Password</p>
+            </a>
+        </div>
+        <button id="login">Sign In</button>
+        <div class="optbtn">
+            <a href="https://www.facebook.com/" target="_blank"><button id="fbtn"><i
+                        style="margin-right: 5px; color: white;" class="fab fa-facebook-f"></i>Sign In with
+                    Facebook</button></a>
+            <a href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&flowEntry=ServiceLogin"
+                target="_blank"><button id="gbtn"><i style="margin-right: 5px; color: white;"
+                        class="fab fa-google-plus-g"></i>Sign In with Google Plus </button></a>
+        </div>
+    </div>
+
+
+
+
+<div id="footer"></div>
+
+ 
+</body>
+
+</html>
+
+<script type="module">
+
+import categories from "./categories.js"
+     import {navbar,createDropdown,updateCart,checkLogStatus} from "./header.js"
+     import footer from "/chappal.js"
+    document.getElementById("navbar").innerHTML = navbar()
+        createDropdown(categories)
+        updateCart()
+        checkLogStatus()
+document.getElementById("footer").innerHTML = footer()
+
+    //    console.log(regdUsers)
+    document.getElementById("login").addEventListener("click", signIn)
+    
+    let closesign = document.getElementById("closesec").addEventListener("click", closelogin)
+
+
+
+
+async function signIn(event) {
+    
+    try{
+    let login_data = {
+            username: document.getElementById("username").value,
+            password: document.getElementById("password").value,
+        }
+          login_data = JSON.stringify(login_data)
+
+          let url = `https://masai-api-mocker.herokuapp.com/auth/login`;
+          let response =await fetch(url,{
+              method:"POST",
+              body:login_data,
+              headers:{
+                  "Content-Type":"application/json"
+                }
+            });
+            
+            let data =await response.json()
+            let user  =document.getElementById("username").value;
+ let  userData = await  getUser(user,data.token)
+        console.log(userData);
+        if(userData.message =="Invalid token for user") {
+         
+
+
+        } else {
+            localStorage.setItem("userData",JSON.stringify(userData))
+            window.location.href = "index.html"
+        }
+       
+    }
+     catch(err) {
+         alert("Enter valid details")
+     }
+}
+
+
+
+async function getUser(username,token) {
+    let url = `https://masai-api-mocker.herokuapp.com/user/${username}`
+
+      let response = await fetch(url,{
+          headers:{
+              "Content-Type":"application/json",
+              Authorization:`Bearer ${token}`
+          }
+      })
+      let data = await response.json()
+      return data
+}
+
+
+
+
+
+    function closelogin() {
+        window.location.href = "index.html"
+    }
+
+
+
+    document.getElementById("logInBtn").addEventListener("click",()=>{
+  
+  let logInBtn = document.getElementById("logInBtn")
+  if(logInBtn.innerText=="Log Out") {
+ 
+      localStorage.setItem("userData",JSON.stringify({}))
+      window.location.reload();
+  } else{
+      window.location.href = "signin.html"
+      checkLogStatus()
+  }
+
+})
+
+document.getElementById("createUser").addEventListener("click",()=>{
+let createUserBtn = document.getElementById("createUser");
+  if(createUserBtn.innerText=="Create Account") {
+      window.location.href = "signup.html"
+  }
+  
+})
+
+</script>

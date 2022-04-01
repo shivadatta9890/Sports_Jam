@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Checkout page</title>
+
+    <style>
+        *{
+            font-family: sans-serif;
+        }
+       
+        .b1 {
+            display: flex;
+            
+            justify-content: space-between;
+        }
+
+        .b2 {
+           
+            width: 50%;
+        }
+
+        .textc {
+            text-align: center;
+        }
+
+        .textl {
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .textr {
+            text-align: right;
+            padding-top: 22px;
+            padding-right: 15px;
+        }
+
+        img {
+            margin-top: 50px;
+            height: 70px;
+        }
+
+        .boxinr {
+            width: 70%;
+            margin: auto auto auto 25%;
+        }
+
+        .biginp {
+            width: 95%;
+            height: 40px;
+            border-radius: 4px;
+            /* margin: 5px; */
+        }
+
+        .inpname {
+            width: 45%;
+            height: 40px;
+            border-radius: 4px;
+        }
+
+        .inppin {
+            width: 29%;
+            height: 40px;
+            border-radius: 4px;
+        }
+
+        input {
+            margin: 5px;
+        }
+
+        .dwnbtn {
+            text-align: right;
+
+        }
+
+        .dwnreturn {
+            text-align: left;
+            padding-top: 20px;
+            padding-left: 15px;
+            padding-bottom: 20px;
+        }
+
+
+        hr {
+            color: black;
+            height: 1px;
+            background-color: black;
+        }
+
+        #rightbox1 {
+            background-color: #fcf7f7;
+        }
+
+        .boxinl {
+            width: 70%;
+            margin: auto 25% auto auto;
+        }
+
+        #giftinp {
+            width: 65%;
+            height: 35px;
+        }
+
+        #b2rcoupon {
+            width: 75%;
+            height: 35px;
+            border-radius: 4px;
+        }
+
+        #b2rbtn {
+            width: 15%;
+            height: 35px;
+            border-radius: 4px;
+        }
+
+        #boxright>div {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <div class="b1">
+        <div class="textc b2">
+            <div class="boxinr">
+               <a href="index.html"> <img src="https://storage.sg.content-cdn.io/in-resources/b368029c-a4dd-448a-a888-58348cb1b144/Images/userimages/logo.jpg"
+                    alt=""> 
+                </a>
+                    <br> 
+                    <br>
+                <div>
+                    <spna><a href="cart.html" style="text-decoration: none;"> Cart</a></spna> > Information >
+                    Shipping > Payment
+                </div>
+                <div class="b1">
+                    <div class="b2 textl">
+                        <h3>
+                            Contact Information
+                        </h3>
+                    </div>
+                    <div class="b2 textr">
+                        Already have an account? Log in
+                    </div>
+                </div>
+                <div>
+                    <form>
+                        <div>
+                            <input type="text" placeholder="Mobile Phone Number" class="biginp" autofocus required
+                                id="contactno.">
+                        </div>
+
+                        <div class="textl">
+                            <input type="checkbox" value="1" autofocus required> Email me with news and offers
+                        </div>
+
+                        <br>
+                        <div class="textl">
+                            <h3>
+                                Shipping Address
+                            </h3>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="First Name" class="inpname" autofocus required>
+                            <input type="text" placeholder="Last Name" class="inpname" autofocus required>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Address" class="biginp" autofocus required id="address">
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Apartment, suite, etc (optional)" class="biginp" autofocus>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="City" class="biginp" autofocus>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Country" class="inppin" required autofocus>
+                            <input type="text" placeholder="State" class="inppin" required autofocus>
+                            <input type="number" placeholder="Pin" class="inppin" minlength="6" maxlength="6" autofocus
+                                required>
+                        </div>
+                        <div>
+                            <input type="number" placeholder="Phone" class="biginp" autofocus required>
+                        </div>
+                        <div class="textl">
+                            <input type="checkbox" value="1" autofocus required> Save this information for next time
+                        </div>
+                        <br>
+                        <div class="b1">
+                            <div class="b2 dwnreturn">
+                                <a href="cart.html" style="text-decoration: none;">
+                                    < Return to cart </a>
+                            </div>
+                            <div class="b2 dwnbtn">
+                                <a href="shipping.html"> <button id="inpsub"
+                                        style="background-color: #197BBD;color: white;padding: 10px;border-radius: 5px;width:200px; font-size: 18px;"
+                                        onclick="shifttoinfo()">Continue to Shipping</button></a>
+                            </div>
+                        </div>
+                    </form>
+                    <hr style="color: grey; height: 1px;">
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="textc b2" id="rightbox1">
+            <div class="boxinl">
+                <div id="boxright">
+
+                    <br>
+                    <br>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <form action="">
+                    <div>
+                        <input type="text" placeholder="Gift card or Discount code" id="b2rcoupon">
+                        <button id="b2rbtn">Apply</button>
+                    </div>
+                </form>
+                <br>
+                <hr>
+                <br>
+                <div class="dwnreturn">
+                    <div style="display:flex;justify-content: space-between;align-items: center;">
+                        <p> Subtotal </p>
+                        <p class="dekhototal"></p>
+                    </div>
+
+                    <div style="display:flex;justify-content: space-between;align-items: center;">
+                        <p> Shipping </p>
+                        <p>Calculated at next step</p>
+                    </div>
+                </div>
+                <br>
+                <hr>
+                <br>
+                <div class="dwnreturn" style="display:flex;justify-content: space-between;align-items: center;">
+                    <div> Total
+                        <p id="tax"></p>
+                    </div>
+                    <div style="font-size: 20px;font-weight: bold;" class="dekhototal"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<script>
+
+    let parent = document.getElementById("ca")
+
+    let products = JSON.parse(localStorage.getItem("cartProducts"));
+
+    let sum = 0;
+
+    function showhokproduct() {
+
+        products.forEach(function (product) {
+
+            sum = sum + Number(product.price??product.mrp)
+        })
+
+    }
+    showhokproduct()
+
+    let dekhototal = document.getElementsByClassName("dekhototal")[0]
+
+    dekhototal.textContent = "₹" + sum + ".00"
+
+
+    let tax = document.getElementById("tax")
+
+    tax.textContent = "including" + " " + "₹" + Math.round((sum * 0.12)) + " " + "in taxes"
+
+    let total = document.getElementsByClassName("dekhototal")[1]
+
+    total.textContent = "₹" + sum + ".00"
+
+    let input = document.getElementById("b2rcoupon")
+
+    let apply = document.getElementById("b2rbtn")
+    apply.addEventListener("click", dedo_discount)
+
+    function dedo_discount(event) {
+        event.preventDefault();
+        if (input.value == "masai30") {
+            let add = sum - (sum * 0.3)
+            dekhototal.innerHTML = null
+            dekhototal.textContent = "₹" + add + ".00"
+            total.textContent = "₹" + add + ".00"
+            input.value = ""
+        }
+    }
+
+
+
+
+
+
+    if (localStorage.getItem("hok_info") === null) {
+        localStorage.setItem("hok_info", JSON.stringify([]))
+    }
+
+    let jaopay = document.getElementById("inpsub")
+    jaopay.addEventListener("click", jarahu)
+
+
+
+    function jarahu() {
+        let info = JSON.parse(localStorage.getItem("hok_info"))
+
+        let contact = document.getElementById("contactno.").value
+        let address = document.getElementById("address").value
+        let obj = {
+            contact: contact,
+            address: address
+        }
+        if (contact != "" && address != "") {
+
+            info.push(obj)
+        }
+        localStorage.setItem("hok_info", JSON.stringify(info))
+    }
+
+    function shifttoinfo() {
+
+        let form = document.querySelector("form")
+        if (form.value !== "") {
+            window.location.href = "shipping.html"
+        }
+    }
+
+
+</script>

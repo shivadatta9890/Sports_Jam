@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products page</title>
+    <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V"
+    crossorigin="anonymous"
+  />
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/chappal.css">
+    <link rel="stylesheet" href="styles/product.css">
+  
+    <style>
+   
+*{
+    font-family: sans-serif;
+}
+   
+    </style>
+</head>
+<body>
+    
+    <div id="navbar">
+
+    </div>
+
+    <div class="product-page-container">
+
+        <div class="filter-sidebar">
+         <div class="category-menu-box">
+             <h3 class="category-menu-title">
+                 Category Menu
+             </h3>
+             <div class="category-menu">
+                 
+             </div>
+         </div>
+        </div>
+
+        <div class="main-area-box">
+           <div class="product-sorting-nav">
+             <div class="sorting-container">
+                <div class="show-as-container">
+                    <h3 class="show-as-title">SHOW AS</h3>
+                    <div class="choose-grid">
+                        <div>3</div>
+                        <div>4</div>
+                    </div>
+                </div>
+                <select name="" id="sorting" >
+                    <option value="sortby">Sort By</option>
+                    <option value="lowtohigh">Low To High</option>
+                    <option value="hightolow">High To Low</option>
+                    <option value="discount">Discount</option>
+                </select>
+              </div>
+            </div>
+
+             <div id="product-container">
+
+             </div>
+        </div>
+    </div>
+
+    <div id="footer">
+
+    </div>
+</body>
+</html>
+<script type="module">
+     import categories from "./categories.js"
+     import {navbar,createDropdown,updateCart,checkLogStatus} from "./header.js"
+     import footer from "./chappal.js"
+    document.getElementById("navbar").innerHTML = navbar()
+        createDropdown(categories)
+        updateCart()
+        checkLogStatus()
+document.getElementById("footer").innerHTML = footer()
+
+
+let productLocalArr = JSON.parse(localStorage.getItem("productLocalArr")) ?? []
+let product_container  = document.getElementById("product-container");
+
+showproduct(productLocalArr,product_container)
+
+
+function showproduct(data,parent) {
+
+//  to show only HL and LH data
+parent.innerHTML = null;
+
+if(data.length ==0) {
+ let img = document.createElement("img")
+ img.src = "./assets/empty.png"
+ parent.append(img)
+}
+
+else {
+
+data.forEach(function (product) {
+ 
+    let div = document.createElement("div");
+    div.setAttribute("class","product-box")
+
+    let img = document.createElement("img")
+    img.setAttribute("class","product-img")
+    img.src = product.img;
+
+     let money_div = document.createElement("div")
+     money_div.setAttribute("class","product-price-box")
+
+    let product_price = document.createElement("p");
+    product_price.textContent = `Price ${product.price??product.mrp}`
+     
+     let discount = document.createElement("p")
+     discount.innerText=`${product.discount}`;
+
+     money_div.append(product_price,discount)
+
+    let product_name = document.createElement("p")
+    product_name.textContent =product.name??product.title;
+
+    let addtoCart_btn = document.createElement("button")
+    addtoCart_btn.setAttribute("class","add-to-cart-btn")
+    addtoCart_btn.innerText = "Add To Cart"
+
+    addtoCart_btn.onclick = function () {
+        updateCart("add",null,product)
+    }
+    div.append(img, money_div, product_name, addtoCart_btn);
+
+    parent.append(div)
+
+})
+}
+
+}
+
+
+document.getElementById("sorting").addEventListener("click",()=>{
+    let value = document.getElementById("sorting").value;
+
+    if(value=="lowtohigh") {
+lowToHigh()
+    }
+    if(value == "hightolow"){
+        highToLow()
+    }
+    if(value=="discount") {
+        discountSort()
+    }
+})
+
+function highToLow() {
+     productLocalArr = productLocalArr.sort(function (a, b) {
+        return (b.price ?? b.mrp) - (a.price ?? a.mrp)
+    })
+  showproduct(productLocalArr,product_container)
+}
+function discountSort() {
+     productLocalArr = productLocalArr.sort(function (a, b) {
+        return parseInt(b.discount) - parseInt(a.discount)
+    })
+  showproduct(productLocalArr,product_container)
+}
+
+function lowToHigh() {
+     productLocalArr = productLocalArr.sort(function (a, b) {
+        return (a.price ?? a.mrp) - (b.price ?? b.mrp)
+    })
+    showproduct(productLocalArr,product_container)
+}
+
+
+document.getElementById("logInBtn").addEventListener("click",()=>{
+  
+  let logInBtn = document.getElementById("logInBtn")
+  if(logInBtn.innerText=="Log Out") {
+      localStorage.setItem("userData",JSON.stringify({}))
+      window.location.reload();
+  } else{
+      window.location.href = "signin.html"
+      checkLogStatus()
+  }
+
+})
+
+document.getElementById("createUser").addEventListener("click",()=>{
+let createUserBtn = document.getElementById("createUser");
+  if(createUserBtn.innerText=="Create Account") {
+      window.location.href = "signup.html"
+  }
+  
+})
+
+</script>
